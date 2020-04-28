@@ -75,7 +75,11 @@ public class PlayerAttack_Jack : MonoBehaviour
         if (comboExpireTime < elapsedTimeSinceLastAttack)
             attackComboIndex = 0;
     }
-
+    public Vector2 GetMouseClickScreenDirection(){
+        Vector3 playerPos = Camera.main.WorldToScreenPoint(transform.position);
+        Vector2 temp = Input.mousePosition - playerPos;
+        return temp;
+    }
     private void StartAttacking(float angle)
     {
         isAttacking = true;
@@ -96,9 +100,11 @@ public class PlayerAttack_Jack : MonoBehaviour
 
     private void SetDirectionThenAttack(float angle)
     {
+        //this is ugly  -------------  Mysgym
+
         if (angle >= -22.5f && angle < 22.5f)
         {
-            playerController.SetPlayerDirection(Direction.Right);
+            playerController.SetPlayerDirection(Direction.Right, new Vector2(1, 0));
 
             playerController.anim.SetTrigger("RightAttack");
             DealDamage(attackPoints.rightAttackPoint);
@@ -106,7 +112,7 @@ public class PlayerAttack_Jack : MonoBehaviour
         }
         else if (angle >= 22.5f && angle < 67.5f)
         {
-            playerController.SetPlayerDirection(Direction.UpRight);
+            playerController.SetPlayerDirection(Direction.UpRight,new Vector2(0.7f, 0.7f));
 
             playerController.anim.SetTrigger("UpRightAttack");
             DealDamage(attackPoints.upRightAttackPoint);
@@ -114,7 +120,7 @@ public class PlayerAttack_Jack : MonoBehaviour
         }
         else if (angle >= 67.5f && angle < 112.5f)
         {
-            playerController.SetPlayerDirection(Direction.Up);
+            playerController.SetPlayerDirection(Direction.Up, new Vector2(0, 1));
 
             playerController.anim.SetTrigger("UpAttack");
             DealDamage(attackPoints.upAttackPoint);
@@ -122,7 +128,7 @@ public class PlayerAttack_Jack : MonoBehaviour
         }
         else if (angle >= 112.5f && angle < 157.5f)
         {
-            playerController.SetPlayerDirection(Direction.UpLeft);
+            playerController.SetPlayerDirection(Direction.UpLeft, new Vector2(-0.7f, 0.7f));
 
             playerController.anim.SetTrigger("UpLeftAttack");
             DealDamage(attackPoints.upLeftAttackPoint);
@@ -130,7 +136,7 @@ public class PlayerAttack_Jack : MonoBehaviour
         }
         else if (angle >= -157.5f && angle < -112.5f)
         {
-            playerController.SetPlayerDirection(Direction.DownLeft);
+            playerController.SetPlayerDirection(Direction.DownLeft, new Vector2(-0.7f, -0.7f));
 
             playerController.anim.SetTrigger("DownLeftAttack");
             DealDamage(attackPoints.downLeftAttackPoint);
@@ -138,7 +144,7 @@ public class PlayerAttack_Jack : MonoBehaviour
         }
         else if (angle >= -112.5f && angle < -67.5f)
         {
-            playerController.SetPlayerDirection(Direction.Down);
+           playerController.SetPlayerDirection(Direction.Down, new Vector2(0, -1));
 
             playerController.anim.SetTrigger("DownAttack");
             DealDamage(attackPoints.downAttackPoint);
@@ -146,7 +152,7 @@ public class PlayerAttack_Jack : MonoBehaviour
         }
         else if (angle >= -67.5f && angle < -22.5f)
         {
-            playerController.SetPlayerDirection(Direction.DownRight);
+            playerController.SetPlayerDirection(Direction.DownRight, new Vector2(0.7f, -0.7f));
 
             playerController.anim.SetTrigger("DownRightAttack");
             DealDamage(attackPoints.downRightAttackPoint);
@@ -154,7 +160,7 @@ public class PlayerAttack_Jack : MonoBehaviour
         }
         else if (angle >= 157.5f || angle < -157.5f)
         {
-            playerController.SetPlayerDirection(Direction.Left);
+            playerController.SetPlayerDirection(Direction.Left, new Vector2(-1, 0));
 
             playerController.anim.SetTrigger("LeftAttack");
             DealDamage(attackPoints.leftAttackPoint);

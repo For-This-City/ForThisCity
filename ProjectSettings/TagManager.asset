@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - waypoint
   - Damagable
+  - waypoint
   layers:
   - Default
   - TransparentFX
@@ -15,13 +15,13 @@ TagManager:
   - UI
   - 
   - 
-  - Background
-  - Ground
-  - Player
-  - Wall
-  - PlayerWallCollider
-  - Enemy
   - Floor
+  - Ennemy
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -43,15 +43,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
-    uniqueID: 1428993543
-    locked: 0
-  - name: Ground
-    uniqueID: 3506126729
-    locked: 0
-  - name: Player
-    uniqueID: 3970556513
-    locked: 0
-  - name: UI
-    uniqueID: 2687400329
+  - name: Entity
+    uniqueID: 236794803
     locked: 0
